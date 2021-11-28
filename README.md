@@ -1,6 +1,6 @@
 # JUMP2DIGITAL
 
-Checkout creado con Next.js para la hackaton de JUMP2DIGITAL.
+Checkout creado con Next.js y TypeScript para la hackaton de JUMP2DIGITAL.
 
 ## Installation
 
