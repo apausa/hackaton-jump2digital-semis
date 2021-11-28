@@ -1,9 +1,12 @@
+/* eslint-disable no-param-reassign */
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 import { EventInterface, CountriesInterface } from '../../types';
 
 export default function Card({ countries }: CountriesInterface) {
+  const router = useRouter();
   const PRICE = 899.00;
   const [email, setEmail] = useState('');
   const [cardNumber, setCardNumber] = useState('');
@@ -14,16 +17,39 @@ export default function Card({ countries }: CountriesInterface) {
   const [zip, setZip] = useState('');
 
   const handleEmail = (event: EventInterface) => setEmail(event.target.value);
-  const handleCardNumber = (event: EventInterface) => setCardNumber(event.target.value);
-  const handleCardCvc = (event: EventInterface) => setCardCvc(event.target.value);
-  const handleCardDate = (event: EventInterface) => setCardDate(event.target.value);
+  const handleCardNumber = (event: any) => {
+    if (cardNumber.length === 16
+      && event.nativeEvent.inputType !== 'deleteContentBackward') return;
+    if (Number.isNaN(+event.target.value)) return;
+    setCardNumber(event.target.value);
+  };
+  const handleCardDate = (event: any) => {
+    if (cardDate.length === 5
+      && event.nativeEvent.inputType !== 'deleteContentBackward') return;
+    if (cardDate.length === 1) {
+      event.target.value += '/';
+    }
+    setCardDate(event.target.value);
+  };
+  const handleCardCvc = (event: any) => {
+    if (cardCvc.length === 3
+      && event.nativeEvent.inputType !== 'deleteContentBackward') return;
+    if (Number.isNaN(+event.target.value)) return;
+    setCardCvc(event.target.value);
+  };
   const handleCardName = (event: EventInterface) => setCardName(event.target.value);
   const handleCountry = (event: EventInterface) => setCountry(event.target.value);
-  const handleZip = (event: EventInterface) => setZip(event.target.value);
+  const handleZip = (event: any) => {
+    if (zip.length === 5
+      && event.nativeEvent.inputType !== 'deleteContentBackward') return;
+    if (Number.isNaN(+event.target.value)) return;
+    setZip(event.target.value);
+  };
   const onSubmit = async () => {
     await axios.post('', {
       email, cardNumber, cardCvc, cardDate, cardName, country, zip,
     });
+    router.push('/thanks');
   };
   return (
     <fieldset>
@@ -45,7 +71,7 @@ export default function Card({ countries }: CountriesInterface) {
           onChange={handleCardNumber}
           type="text"
           name="number"
-          placeholder="1234 1234 1234 1234"
+          placeholder="1234123412341234"
           required
         />
         <input
