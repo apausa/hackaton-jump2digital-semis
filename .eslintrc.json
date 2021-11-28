@@ -9,7 +9,9 @@
     "project": "./tsconfig.json"
   },
   "rules": {
+    "react/function-component-definition": "off",
     "react/jsx-props-no-spreading": "off",
-    "func-names": "off"
+    "func-names": "off",
+    "jsx-a11y/label-has-associated-control": "off"
   }
 }
