@@ -4,7 +4,15 @@ Checkout creado con Next.js y TypeScript para la hackaton de JUMP2DIGITAL.
 
 ## Installation
 
-First, run the development server:
+1. Download dependencies with 
+
+```bash
+npm install
+# or
+yarn
+```
+
+2.   run the development server:
 
 ```bash
 npm run dev
