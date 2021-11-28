@@ -1,6 +1,7 @@
 # JUMP2DIGITAL
 
 Checkout creado con Next.js y TypeScript para la hackaton de JUMP2DIGITAL.
+Deployed en jump2digital.vercel.app. 
 
 ## Installation
 
